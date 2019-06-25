@@ -3,6 +3,7 @@ const cors=require('cors')
 const app=express()
 const port = process.env.PORT || 3001
 const path = require("path")
+var Negotiator = require('negotiator')
 const {mongoose}=require('./config/database')
 
 // 1st appoach
