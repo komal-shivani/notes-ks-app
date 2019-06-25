@@ -85,7 +85,7 @@ class App extends React.Component{
         <Switch>
 
         <Route path="/" component={NotesRegister} exact />
-        <Route path="/#/notes" component={NotesList} exact={true}/>
+        <Route path="/#notes" component={NotesList} exact={true}/>
         <Route path="/notes/new" component={NotesNew} exact={true} />
         <Route path="/users/account" component={NotesAccount} exact={true} />
         <Route path="/notes/edit/:id" component={NotesEdit} exact={true}/>
