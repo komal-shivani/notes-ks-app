@@ -55,7 +55,7 @@ class App extends React.Component{
             <div>
            
               <li><Link to="/notes">List Notes</Link><br /></li> 
-              <li> <Link to="/categories">List Categories</Link><br /></li>
+              <li><Link to="/categories">List Categories</Link><br /></li>
               <li><Link to="/tags">List Tags </Link></li>
               <li><Link to='users/account'>Account</Link></li>
               <li><Link to='users/logout'>Logout</Link></li>
