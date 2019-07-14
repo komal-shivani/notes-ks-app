@@ -15,7 +15,7 @@ class NotesForm extends React.Component{
         } 
         this.handleChange=this.handleChange.bind(this)
         this.handleSubmit=this.handleSubmit.bind(this)
-        this.handleTagSelection=this.handleTagSelection.bind(this)
+        // this.handleTagSelection=this.handleTagSelection.bind(this)
     }
     handleChange(e){
         e.persist()
@@ -29,11 +29,11 @@ class NotesForm extends React.Component{
             title:this.state.title,
             body:this.state.body,
             category:this.state.category,
-            tags:this.state.selectedTags.map(tag=>{
-                return {
-                    tag:tag._id
-                }
-            })
+            // tags:this.state.selectedTags.map(tag=>{
+            //     return {
+            //         tag:tag._id
+            //     }
+            // })
         }
         console.log(formData)
         this.props.handleSubmit(formData)
@@ -66,31 +66,41 @@ class NotesForm extends React.Component{
             category:nextProps.note.category._id
         }))
     }
-     handleTagSelection(tag){
-        //  console.log(tag.target)
-        this.setState((prevState)=>({
-            selectedTags:[...prevState.selectedTags,tag]
-        }))
-     }
+    //  handleTagSelection(tag){
+    //     //  console.log(tag.target)
+    //     this.setState((prevState)=>({
+    //         selectedTags:[...prevState.selectedTags,tag]
+    //     }))
+    //  }
 
     render(){
-        // console.log(this.state.selectedTags)
+       
         // console.log('form render')
         return(
-            <div>
+            <div class="container-fluid">
+                <div class="card-group">
+                    <div class="card">
+                        <div class="formgroup">
+                            <div class="card-text">
              <form onSubmit={this.handleSubmit}>
-                 <label>Title:
-                     <input type="text" value={this.state.title} 
+                    <label className="col-sm-2 col-form-label" >Title</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" value={this.state.title} 
                      onChange={this.handleChange}
                      name="title"/>
-                 </label>
+                     </div>
+                
                  <br/><br/>
 
-                 <label>Body:
+ 
+                 <div class="form-group">
+                      <label className="col-sm-2 col-form-label">Body:</label>
+                            <div class="col-sm-10">
                      <textarea value={this.state.body}
-                     onChange={this.handleChange}
+                        onChange={this.handleChange} class="form-control"
                      name="body"></textarea>
-                 </label>
+                     </div>
+                     </div>
                  <br/><br/>
 
                  <label>
@@ -101,20 +111,25 @@ class NotesForm extends React.Component{
                      })}
                  </label><br/><br/>
 
-                  <label>Category:
-                        <select value={this.state.category} name="category" onChange={this.handleChange}>
+                                    <div class="btn-group"></div>
+                                    <label className="col-sm-2 col-form-label">Category:</label>
+                                    <div class="col-sm-10">
+                                        <select class="custom-select custom-select-sm" value={this.state.category} name="category" onChange={this.handleChange}>
                             <option value="">select</option>
                             {this.state.categories.map((category)=>{
                                 return <option key={category._id}
                                 value={category._id}>{category.name}</option>
                             })}
                         </select>
-                  </label><br/>
+                        </div>
                   <br/>
-
-
-                 <input type="submit"/>
+                  <br/>
+                    <input class="col-lg-12 btn btn-primary mx-auto" type="submit"/>
              </form>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
         )
     }

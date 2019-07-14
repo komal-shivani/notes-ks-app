@@ -41,44 +41,43 @@ class App extends React.Component{
   render(){
     console.log(this.state)
     return(
-      // <div className="container">
-      //   <div className="row">
-      //     <div className="col-md-8">
-
-      //     </div>
-      //   </div>
-      // </div>
       <BrowserRouter>
-        <h2>MY NOTE-APP</h2>
-        <ul>
+      
           {this.state.isAuthenticated && (
             <div>
-           
-              <li><Link to="/notes">List Notes</Link><br /></li> 
-              <li><Link to="/categories">List Categories</Link><br /></li>
-              <li><Link to="/tags">List Tags </Link></li>
-              <li><Link to='users/account'>Account</Link></li>
-              <li><Link to='users/logout'>Logout</Link></li>
+              <Link to="/notes" >List Notes</Link><br /> 
+              <Link to="/categories" >List Categories</Link><br />
+              <Link to="/tags" >List Tags </Link><br/>
+              <Link to='/account' >Account</Link><br/>
+              <Link to='/logout' >Logout</Link><br/>
 
             </div>
           )}
           {!this.state.isAuthenticated && (
-            <div>
-               <li><Link to="/users/register">Register</Link><br/></li>
-               <li><Link to="/users/login">Login</Link><br/></li>
+          // <div className="d-flex justify-content-center">
+            <nav class="navbar navbar-inverse bg-dark">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#">My Note-App</a>
+                </div>
+                <Link to="/register" >Register</Link><br/>
+                <Link to="/login" >Login</Link><br/>
             </div>
+            </nav>
+            // </div>
           )}
-        </ul>
-      
+         
+              
           {/* logged out routes */}
         {!this.state.isAuthenticated && (
           <div>
-             <Route path="/users/register" component={NotesRegister} exact={true}/>
-            <Route path="/users/login" render={(props)=>{
+             <Route path="/register" component={NotesRegister} exact={true}/>
+             <Route path="/login" render={(props)=>{
               return <NotesLogin {...props } handleAuth={this.handleAuth}/>
         }} exact={true}/>
           </div>
         )}
+        
         {/* <logged in router */}
         {this.state.isAuthenticated &&(
         <div>
@@ -87,7 +86,7 @@ class App extends React.Component{
         <Route path="/" component={NotesRegister} exact />
         <Route path="/notes" component={NotesList} exact={true}/>
         <Route path="/notes/new" component={NotesNew} exact={true} />
-        <Route path="/users/account" component={NotesAccount} exact={true} />
+        <Route path="/account" component={NotesAccount} exact={true} />
         <Route path="/notes/edit/:id" component={NotesEdit} exact={true}/>
         <Route path="/categories/new" component={CategoriesNew} exact={true}/> 
         <Route path="/categories/:id" component={CategoriesShow} exact={true}/>
@@ -96,7 +95,7 @@ class App extends React.Component{
         <Route path="/tags" component={TagsList} exact={true}/>
         <Route path="/tags/new" component={TagsNew} exact={true}/>
     
-        <Route path="/users/logout" render={(props)=>{
+        <Route path="/logout" render={(props)=>{
         return <NotesLogout {...props} handleAuth={this.handleAuth}/> }} exact={false}/>
               
            </Switch>

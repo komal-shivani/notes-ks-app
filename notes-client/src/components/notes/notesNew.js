@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from '../../config/config-axios';
 import NotesForm from './notesForm'
- 
+
 class NotesNew extends React.Component{
     constructor(){
         super()
